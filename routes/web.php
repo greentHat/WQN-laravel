@@ -22,3 +22,11 @@ Route::resource('users','UsersController');
 Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');
 Route::delete('logout', 'SessionsController@destroy')->name('logout');
+
+Route::get('test',function(){
+    $result = Ofcold\IdentityCard\IdentityCard::make('421126199612131714');
+    if($result == false){
+        return '你的证件不正确';
+    }
+    print_r($result->toArray());
+});
