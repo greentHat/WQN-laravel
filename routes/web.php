@@ -30,6 +30,8 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
+Route::resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);
+
 Route::get('test',function(){
     $result = Ofcold\IdentityCard\IdentityCard::make('421126199612131714');
     if($result == false){
